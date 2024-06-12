@@ -24,7 +24,6 @@ class JsonImporter(Importer):
         return result
 
 
-
 class CsvImporter:
     pass
 
