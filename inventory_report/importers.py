@@ -1,3 +1,4 @@
+import json
 from abc import ABC, abstractmethod
 from typing import Dict, Type
 
@@ -13,8 +14,15 @@ class Importer(ABC):
         pass
 
 
-class JsonImporter:
-    pass
+class JsonImporter(Importer):
+    def import_data(self) -> list[Product]:
+        with open(self.path) as file:
+            products = json.load(file)
+
+            result = [Product(**p) for p in products]
+
+        return result
+
 
 
 class CsvImporter:
